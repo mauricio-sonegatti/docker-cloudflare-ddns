@@ -1,6 +1,7 @@
 [![Travis](https://img.shields.io/travis/mauricio-sonegatti/docker-cloudflare-ddns.svg)](https://travis-ci.org/mauricio-sonegatti/docker-cloudflare-ddns) [![Docker Pulls](https://img.shields.io/docker/pulls/macvirii/docker-cloudflare-ddns.svg)](https://hub.docker.com/r/macvirii/docker-cloudflare-ddns/)
 # Docker CloudFlare DDNS
 
+This is a small alteration on oznu's docker image, it alters the way it gets the interface IP so it gets the machine IPV6 correctly when you use -e INTERFACE xxx.
 This small Alpine Linux based Docker image will allow you to use the free [CloudFlare DNS Service](https://www.cloudflare.com/dns/) as a Dynamic DNS Provider ([DDNS](https://en.wikipedia.org/wiki/Dynamic_DNS)).
 
 This is a multi-arch image and will run on amd64, aarch64, and armhf devices, including the Raspberry Pi.
@@ -9,9 +10,9 @@ This is a multi-arch image and will run on amd64, aarch64, and armhf devices, in
 
 | Image Tag      | Architecture  | OS            | Size   |
 | :------------- | :-------------| :------------ | :----  |
-| latest         | x64           | Alpine Linux  | [![](https://images.microbadger.com/badges/image/oznu/cloudflare-ddns.svg)](https://microbadger.com/images/oznu/cloudflare-ddns) |
-| armhf          | arm32v6       | Alpine Linux  | [![](https://images.microbadger.com/badges/image/oznu/cloudflare-ddns:armhf.svg)](https://microbadger.com/images/oznu/cloudflare-ddns:armhf) |
-| aarch64        | arm64         | Alpine Linux  | [![](https://images.microbadger.com/badges/image/oznu/cloudflare-ddns:aarch64.svg)](https://microbadger.com/images/oznu/cloudflare-ddns:aarch64) |
+| latest         | x64           | Alpine Linux  | [![](https://images.microbadger.com/badges/image/macvirii/docker-cloudflare-ddns.svg)](https://microbadger.com/images/macvirii/docker-cloudflare-ddns) |
+| armhf          | arm32v6       | Alpine Linux  | [![](https://images.microbadger.com/badges/image/macvirii/docker-cloudflare-ddns:armhf.svg)](https://microbadger.com/images/macvirii/docker-cloudflare-ddns:armhf) |
+| aarch64        | arm64         | Alpine Linux  | [![](https://images.microbadger.com/badges/image/macvirii/docker-cloudflare-ddns:aarch64.svg)](https://microbadger.com/images/macvirii/docker-cloudflare-ddnss:aarch64) |
 
 ## Usage
 
@@ -22,7 +23,7 @@ docker run \
   -e API_KEY=xxxxxxx \
   -e ZONE=example.com \
   -e SUBDOMAIN=subdomain \
-  oznu/cloudflare-ddns
+  macvirii/docker-cloudflare-ddns
 ```
 
 ## Parameters
@@ -79,7 +80,7 @@ If you prefer to use [Docker Compose](https://docs.docker.com/compose/):
 version: '2'
 services:
   cloudflare-ddns:
-    image: oznu/cloudflare-ddns:latest
+    image: macvirii/docker-cloudflare-ddns:latest
     restart: always
     environment:
       - API_KEY=xxxxxxx
@@ -90,7 +91,7 @@ services:
 
 ## License
 
-Copyright (C) 2017-2020 oznu
+Copyright (C) 2022 mauricio.sonegatti and oznu
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
